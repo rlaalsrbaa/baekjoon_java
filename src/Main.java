@@ -2,13 +2,19 @@ import java.util.Scanner;
 
 public class Main {
   public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int A = sc.nextInt();
+    int B = sc.nextInt();
 
-    System.out.println("         ,r'\"7");
-    System.out.println("r`-_   ,'  ,/");
-    System.out.println(" \\. \". L_r'");
-    System.out.println("   `~\\/");
-    System.out.println("      |");
-    System.out.println("      |");
-
+    if(A>B){
+      System.out.println(">");
+    }
+    else if(A<B){
+      System.out.println("<");
+    }
+    else{
+      System.out.println("==");
+    }
+    sc.close();
   }
 }
