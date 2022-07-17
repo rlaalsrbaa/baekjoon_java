@@ -3,17 +3,22 @@ import java.util.Scanner;
 public class Main {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
-    int A = sc.nextInt();
-    int B = sc.nextInt();
+    int score = sc.nextInt();
 
-    if(A>B){
-      System.out.println(">");
+    if(score > 89){
+      System.out.println("A");
     }
-    else if(A<B){
-      System.out.println("<");
+    else if(score > 79){
+      System.out.println("B");
+    }
+    else if(score > 69){
+      System.out.println("C");
+    }
+    else if(score > 59){
+      System.out.println("D");
     }
     else{
-      System.out.println("==");
+      System.out.println("F");
     }
     sc.close();
   }
