@@ -3,14 +3,20 @@ import java.util.Scanner;
 public class Main {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
-    int year = sc.nextInt();
+    int X = sc.nextInt();
+    int Y = sc.nextInt();
 
-
-    if (year % 400 == 0 || year % 4 == 0 && year % 100 != 0) {
+    if(X>0 && Y>0){
       System.out.println("1");
     }
+    else if(X<0 && Y>0){
+      System.out.println("2");
+    }
+    else if (X<0 && Y<0){
+      System.out.println("3");
+    }
     else{
-      System.out.println("0");
+      System.out.println("4");
     }
     sc.close();
   }
