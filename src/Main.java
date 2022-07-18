@@ -3,21 +3,17 @@ import java.util.Scanner;
 public class Main {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
-    int X = sc.nextInt();
-    int Y = sc.nextInt();
-
-    if(X>0 && Y>0){
-      System.out.println("1");
+    int H = sc.nextInt();
+    int M = sc.nextInt();
+    M = M - 45;
+    if(M < 0){
+      M = M + 60;
+      H = H - 1;
+      if(H<0){
+        H = 23;
+      }
     }
-    else if(X<0 && Y>0){
-      System.out.println("2");
-    }
-    else if (X<0 && Y<0){
-      System.out.println("3");
-    }
-    else{
-      System.out.println("4");
-    }
+    System.out.printf("%d %d", H, M);
     sc.close();
   }
 }
