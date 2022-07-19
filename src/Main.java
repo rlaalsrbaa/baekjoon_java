@@ -7,18 +7,24 @@ public class Main {
     int B = sc.nextInt();
     int C = sc.nextInt();
 
-    B = B + C;
-
-    if(B >= 60){
-      int j = B / 60;
-      A = A + j;
-      B = B % 60;
-      if(A >= 24){
-        A = A - 24;
+    if (A == B && B == C) {
+      System.out.println(10000 + A * 1000);
+    } else if (A == B || B == C || A == C) {
+      if (A == B) {
+        System.out.println(1000 + A * 100);
+      } else {
+        System.out.println(1000 + C * 100);
+      }
+    } else {
+      if(A > B && A > C){
+        System.out.println(A*100);
+      }else if(B > A && B > C){
+        System.out.println(B*100);
+      }else{
+        System.out.println(C*100);
       }
     }
 
-    System.out.printf("%d %d",A,B);
     sc.close();
   }
 }
