@@ -7,7 +7,7 @@ public class Main {
     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
     int N = Integer.parseInt(br.readLine());
 
-    for(int i = 1; i <= N; i++){
+    for(int i = N; i >= 1; i--){
 
       bw.write(i+"\n");
     }
