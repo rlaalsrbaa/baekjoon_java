@@ -12,9 +12,8 @@ public class Main {
       StringTokenizer st = new StringTokenizer(br.readLine());
       int A = Integer.parseInt(st.nextToken());
       int B = Integer.parseInt(st.nextToken());
-      String temp = "Case #"+ i +": ";
 
-      bw.write(temp + (A+B) + "\n");
+      bw.write(String.format("Case #%d: %d + %d = %d\n",i,A,B,A+B));
     }
 
     bw.flush();
