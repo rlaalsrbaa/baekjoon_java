@@ -5,11 +5,16 @@ public class Main {
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-    int N = Integer.parseInt(br.readLine());
+    int T = Integer.parseInt(br.readLine());
 
-    for(int i = N; i >= 1; i--){
 
-      bw.write(i+"\n");
+    for(int i = 1; i <= T; i++){
+      StringTokenizer st = new StringTokenizer(br.readLine());
+      int A = Integer.parseInt(st.nextToken());
+      int B = Integer.parseInt(st.nextToken());
+      String temp = "Case #"+ i +": ";
+
+      bw.write(temp + (A+B) + "\n");
     }
 
     bw.flush();
