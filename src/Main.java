@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.StringTokenizer;
 
 public class Main {
   public static void main(String[] args) throws IOException {
@@ -9,10 +8,12 @@ public class Main {
 
 
     for(int i = 1; i <= T; i++){
-      for(int j=1; j <= i; j++){
-        bw.write("*");
+      String star = "*";
+      String repeat = star.repeat(i);
+      for(int j=T-1; j >= i; j--){
+        bw.write(" ");
       }
-      bw.write("\n");
+      bw.write(String.format("%s\n",repeat));
     }
 
     bw.flush();
