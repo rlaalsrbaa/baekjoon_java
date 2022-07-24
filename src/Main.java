@@ -9,11 +9,10 @@ public class Main {
 
 
     for(int i = 1; i <= T; i++){
-      StringTokenizer st = new StringTokenizer(br.readLine());
-      int A = Integer.parseInt(st.nextToken());
-      int B = Integer.parseInt(st.nextToken());
-
-      bw.write(String.format("Case #%d: %d + %d = %d\n",i,A,B,A+B));
+      for(int j=1; j <= i; j++){
+        bw.write("*");
+      }
+      bw.write("\n");
     }
 
     bw.flush();
