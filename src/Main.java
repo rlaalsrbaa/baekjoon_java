@@ -5,17 +5,15 @@ public class Main {
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-    StringTokenizer st = new StringTokenizer(br.readLine());
-    int N = Integer.parseInt(st.nextToken());
-    int X = Integer.parseInt(st.nextToken());
 
-    StringTokenizer st2 = new StringTokenizer(br.readLine());
-
-    for(int i = 1; i <= N; i++){
-      int A = Integer.parseInt(st2.nextToken());
-      if(A < X){
-        bw.write(A + " ");
+    while(true){
+      StringTokenizer st = new StringTokenizer(br.readLine());
+      int A = Integer.parseInt(st.nextToken());
+      int B = Integer.parseInt(st.nextToken());
+      if(A == 0 && A == B){
+        break;
       }
+      bw.write(String.format("%d\n",A+B));
     }
 
     bw.flush();
