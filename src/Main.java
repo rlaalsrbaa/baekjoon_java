@@ -6,13 +6,20 @@ public class Main {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    while(true){
-      StringTokenizer st = new StringTokenizer(br.readLine());
-      int A = Integer.parseInt(st.nextToken());
-      int B = Integer.parseInt(st.nextToken());
-      if(A == 0 && A == B){
+    int A=0;
+    int B=0;
+    String str;
+
+    while((str=br.readLine()) != null){
+      StringTokenizer st = new StringTokenizer(str);
+
+      if(!st.hasMoreTokens()){
         break;
       }
+
+      A = Integer.parseInt(st.nextToken());
+      B = Integer.parseInt(st.nextToken());
+
       bw.write(String.format("%d\n",A+B));
     }
 
