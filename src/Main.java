@@ -5,22 +5,18 @@ public class Main {
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    StringTokenizer st = new StringTokenizer(br.readLine());
 
-    int A=0;
-    int B=0;
-    String str;
+    int N = Integer.parseInt(st.nextToken());
+    int temp = N;
 
-    while((str=br.readLine()) != null){
-      StringTokenizer st = new StringTokenizer(str);
+    for(int i=1;;i++){
+      temp = (temp % 10 * 10) + ((temp % 10 + temp / 10) % 10);
 
-      if(!st.hasMoreTokens()){
+      if(temp == N){
+        bw.write(String.format("%d\n",i));
         break;
       }
-
-      A = Integer.parseInt(st.nextToken());
-      B = Integer.parseInt(st.nextToken());
-
-      bw.write(String.format("%d\n",A+B));
     }
 
     bw.flush();
