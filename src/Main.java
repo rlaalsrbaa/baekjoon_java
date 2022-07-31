@@ -1,32 +1,27 @@
 import java.io.*;
 import java.util.StringTokenizer;
-
+import java.util.Arrays;
 public class Main {
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
-    int N = Integer.parseInt(br.readLine());
-    StringTokenizer st = new StringTokenizer(br.readLine());
-    int arr[] = new int[N];
+    int[] arr = new int[9];
     int max = 0;
-    int min = 0;
+    int des = 1;
 
-    for(int i = 0; i < N; i++){
-      arr[i] = Integer.parseInt(st.nextToken());
-
+    for(int i = 0; i < 9; i++){
+      arr[i] = Integer.parseInt(br.readLine());
       if(i == 0){
-        min = arr[i];
-        max = arr[i];
+        max = arr[0];
       }
-      else if(arr[i] > max){
+      else if(max < arr[i]){
         max = arr[i];
-      }
-      else if(min > arr[i]){
-        min = arr[i];
+        des = i+1;
       }
     }
-    bw.write(String.format("%d %d\n",min, max));
+
+    bw.write(String.format("%d\n",max));
+    bw.write(String.format("%d\n",des));
 
     bw.flush();
     br.close();
