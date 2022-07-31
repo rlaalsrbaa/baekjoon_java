@@ -5,19 +5,28 @@ public class Main {
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+    int N = Integer.parseInt(br.readLine());
     StringTokenizer st = new StringTokenizer(br.readLine());
+    int arr[] = new int[N];
+    int max = 0;
+    int min = 0;
 
-    int N = Integer.parseInt(st.nextToken());
-    int temp = N;
+    for(int i = 0; i < N; i++){
+      arr[i] = Integer.parseInt(st.nextToken());
 
-    for(int i=1;;i++){
-      temp = (temp % 10 * 10) + ((temp % 10 + temp / 10) % 10);
-
-      if(temp == N){
-        bw.write(String.format("%d\n",i));
-        break;
+      if(i == 0){
+        min = arr[i];
+        max = arr[i];
+      }
+      else if(arr[i] > max){
+        max = arr[i];
+      }
+      else if(min > arr[i]){
+        min = arr[i];
       }
     }
+    bw.write(String.format("%d %d\n",min, max));
 
     bw.flush();
     br.close();
