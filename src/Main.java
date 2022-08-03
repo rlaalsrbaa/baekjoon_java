@@ -1,26 +1,28 @@
 import java.io.*;
 import java.util.Arrays;
+import java.util.StringTokenizer;
 
 public class Main {
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-    int cnt = 10;
-    int[] arr = new int[10];
+    int N = Integer.parseInt(br.readLine());
+    StringTokenizer st = new StringTokenizer(br.readLine());
+    float[] arr = new float[N];
+    float max = 0;
+    float res = 0;
 
-    for(int i = 0; i <= 9; i++){
-      arr[i] = Integer.parseInt(br.readLine()) % 42;
+    for(int i = 0; i < N; i++){
+      arr[i] = Integer.parseInt(st.nextToken());
     }
-
     Arrays.sort(arr);
-
-    for(int i = 0; i <= 9; i++){
-      if(i > 0 && arr[i] % 42 == arr[i-1] % 42){
-        cnt--;
-      }
+    max = arr[arr.length-1];
+    for(int i = 0; i < N; i++){
+      arr[i] = arr[i] / max * 100;
+      res += arr[i];
     }
-
-    bw.write(Integer.toString(cnt));
+    res = res / N;
+    System.out.println(res);
     bw.flush();
     br.close();
     bw.close();
