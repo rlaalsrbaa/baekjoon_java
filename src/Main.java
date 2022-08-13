@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class Main {
@@ -23,53 +24,31 @@ public class Main {
         }
         return wordList;
     }
-    public static int get_maxValue_List(List<Character> wordList) {
-        int maxValue = 0;
-        String str = "";
-        for (int i = 0; i < wordList.size(); i++) {
-            String var = String.valueOf(wordList.get(i));
-            if (str.contains(var)) {
-                continue;
-            }
-            int tempValue = Collections.frequency(wordList, wordList.get(i));
-
-            if (maxValue < tempValue) {
-                maxValue = tempValue;
-            }
-
-            str += var;
-        }
-        return maxValue;
-    }
-    private static char get_Answer(List<Character> wordList, int maxValue) {
-        char answer = 0;
-        int i = 0;
-        int cnt = 0;
-        String str = "";
-        for (char var: wordList
-        ) {
-            if(str.contains(String.valueOf(var))){
-                continue;
-            }
-            int tempValue = Collections.frequency(wordList,var);
-            if(maxValue == tempValue){
-                answer = var;
-                cnt++;
-            }
-            i++;
-            str += var;
-        }
-        if(cnt != 1){
-            return '?';
-        }
-        return answer;
-    }
     public static void solution() throws IOException {
         char[] wordArray = get_Word_Array();
         List<Character> wordList = get_UpperCase_Word_List(wordArray);
-        int maxValue = get_maxValue_List(wordList);
-        char answer = get_Answer(wordList,maxValue);
-        System.out.println(answer);
+        HashMap<Character, Integer> mapList = new HashMap<>();
+        int maxValue = 0;
+        String str = "";
+        for(int i = 0; i < wordList.size(); i++){
+            char key = 0;
+            int value = 0;
+            key = wordList.get(i);
+            if(str.contains(String.valueOf(key))){
+                continue;
+            }
+            value = Collections.frequency(wordList,key);
+            mapList.put(key, value);
+            str += key;
+        }
+        maxValue = Collections.max(mapList.values());
+        System.out.println(maxValue);
+
+        // 얻은 maxValue를 이용해서 key를 찾으면 된다.
+
+        for(int i = 0; i < mapList.size(); i++){
+
+        }
     }
     public static void main(String[] args) throws IOException {
         solution();
