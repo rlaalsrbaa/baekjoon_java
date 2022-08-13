@@ -1,10 +1,5 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
 public class Main {
     public static char[] get_Word_Array() throws IOException {
@@ -24,31 +19,54 @@ public class Main {
         }
         return wordList;
     }
-    public static void solution() throws IOException {
-        char[] wordArray = get_Word_Array();
-        List<Character> wordList = get_UpperCase_Word_List(wordArray);
-        HashMap<Character, Integer> mapList = new HashMap<>();
-        int maxValue = 0;
+    private static HashMap<Character, Integer> get_Word_Map(List<Character> wordList) {
+        HashMap<Character, Integer> wordMap = new HashMap<>();
         String str = "";
-        for(int i = 0; i < wordList.size(); i++){
+
+        for (int i = 0; i < wordList.size(); i++) {
             char key = 0;
             int value = 0;
             key = wordList.get(i);
-            if(str.contains(String.valueOf(key))){
+            if (str.contains(String.valueOf(key))) {
                 continue;
             }
-            value = Collections.frequency(wordList,key);
-            mapList.put(key, value);
+            value = Collections.frequency(wordList, key);
+            wordMap.put(key, value);
             str += key;
         }
-        maxValue = Collections.max(mapList.values());
-        System.out.println(maxValue);
 
-        // 얻은 maxValue를 이용해서 key를 찾으면 된다.
+        return wordMap;
+    }
+    private static char get_Answer(HashMap<Character, Integer> wordMap) {
+        int maxValue = 0;
+        char answer = 0;
+        maxValue = Collections.max(wordMap.values());
+        int cnt = 0;
 
-        for(int i = 0; i < mapList.size(); i++){
-
+        for (char key : wordMap.keySet()
+        ) {
+            int value = wordMap.get(key);
+            if(value == maxValue){
+                answer = key;
+                cnt++;
+                if(cnt == 2){
+                    answer = '?';
+                    break;
+                }
+            }
         }
+        return answer;
+    }
+    public static void solution() throws IOException {
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        char[] wordArray = get_Word_Array();
+        List<Character> wordList = get_UpperCase_Word_List(wordArray);
+        HashMap<Character, Integer> wordMap = get_Word_Map(wordList);
+        char answer = get_Answer(wordMap);
+
+        bw.write(answer);
+        bw.flush();
+        bw.close();
     }
     public static void main(String[] args) throws IOException {
         solution();
