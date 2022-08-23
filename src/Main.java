@@ -6,18 +6,21 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         String str = br.readLine();
+
         String str2 = "";
         String alphabet = "";
         int cnt = 0;
+
         for(int i = 0; i < str.length(); i++){
             str2 += str.charAt(i);
             alphabet = getCroatiaAlphabet(str2);
             if(alphabet != ""){
-                str2 = str2.replace(alphabet,"");
+                str2 = str2.replace(alphabet,".");
                 cnt++;
             }
         }
-        System.out.println(str2);
+
+        str2 = str2.replace(".","");
         cnt += str2.length();
         bw.write(Integer.toString(cnt));
 
