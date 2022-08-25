@@ -1,30 +1,29 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int tc = Integer.parseInt(br.readLine());
-        int cnt = 0;
+        int A = Integer.parseInt(st.nextToken());
+        int B = Integer.parseInt(st.nextToken());
+        int C = Integer.parseInt(st.nextToken());
 
-        for(int i = 0; i < tc; i++){
-            String word = br.readLine();
-            List<Character> temp = new ArrayList<>();
-            char var = 0;
-            int checker = 1;
-            for(int j = 0; j < word.length(); j++){
-                if(temp.contains(word.charAt(j)) && var != word.charAt(j)){
-                    checker = 0;
-                }
-                var = word.charAt(j);
-                temp.add(word.charAt(j));
-            }
-            cnt += checker;
+        int brp = 0;
+        int income = C - B;
+
+        if (B > C || income == 0) {
+            brp = -1;
+        } else if (A == 0) {
+            brp = 1;
+        } else {
+            brp = (A / income) + 1;
         }
-        bw.write(Integer.toString(cnt));
+
+        bw.write(Integer.toString(brp));
+
         bw.flush();
         bw.close();
         br.close();
