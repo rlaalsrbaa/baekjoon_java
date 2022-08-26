@@ -9,15 +9,19 @@ public class Main {
         int temp = 1;
         int i = 0;
 
-        while (true) {
-            i++;
-            temp = temp + (6 * i);
-            if (N < temp) {
-                i += 2;
-                break;
+        if (N == 1) {
+            i = 1;
+        } else {
+            while (true) {
+                i++;
+                temp = temp + (6 * i);
+                if (N <= temp) {
+                    i++;
+                    break;
+                }
             }
         }
-        bw.write(Integer.toString(i)+"\n");
+        bw.write(Integer.toString(i) + "\n");
 
         bw.flush();
         bw.close();
