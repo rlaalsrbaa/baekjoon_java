@@ -1,28 +1,23 @@
 import java.io.*;
-import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int A = Integer.parseInt(st.nextToken());
-        int B = Integer.parseInt(st.nextToken());
-        int C = Integer.parseInt(st.nextToken());
+        int N = Integer.parseInt(br.readLine());
+        int temp = 1;
+        int i = 0;
 
-        int brp = 0;
-        int income = C - B;
-
-        if (B > C || income == 0) {
-            brp = -1;
-        } else if (A == 0) {
-            brp = 1;
-        } else {
-            brp = (A / income) + 1;
+        while (true) {
+            i++;
+            temp = temp + (6 * i);
+            if (N < temp) {
+                i += 2;
+                break;
+            }
         }
-
-        bw.write(Integer.toString(brp));
+        bw.write(Integer.toString(i)+"\n");
 
         bw.flush();
         bw.close();
