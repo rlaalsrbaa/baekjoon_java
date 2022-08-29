@@ -6,14 +6,28 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int[] arr = {1,1,2,2,2,8};
-        int var = 0;
-        for(int i = 0; i < 6; i ++){
-            var = Integer.parseInt(st.nextToken());
-            bw.write(Integer.toString(arr[i] - var) + " ");
+        int X = Integer.parseInt(br.readLine());
+        int N = Integer.parseInt(br.readLine());
+
+        int total = 0;
+
+        for(int i = 0; i < N; i++){
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int a = Integer.parseInt(st.nextToken());
+            int b = Integer.parseInt(st.nextToken());
+
+            total += a * b;
         }
 
+        String ans = "";
+
+        if(total == X){
+            ans = "Yes";
+        }else{
+            ans = "No";
+        }
+
+        bw.write(ans);
         bw.flush();
         bw.close();
         br.close();
