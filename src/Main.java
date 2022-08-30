@@ -1,35 +1,27 @@
 import java.io.*;
-import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
         int X = Integer.parseInt(br.readLine());
-        int N = Integer.parseInt(br.readLine());
 
-        int total = 0;
+        int cross_count = 1, prev_count_sum = 0;
 
-        for(int i = 0; i < N; i++){
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            int a = Integer.parseInt(st.nextToken());
-            int b = Integer.parseInt(st.nextToken());
+        while (true) {
+            if (X <= prev_count_sum + cross_count) {
 
-            total += a * b;
+                if (cross_count % 2 == 1) {
+                    System.out.print((cross_count - (X - prev_count_sum - 1)) + "/" + (X - prev_count_sum));
+                    break;
+                } else {
+                    System.out.print((X - prev_count_sum) + "/" + (cross_count - (X - prev_count_sum - 1)));
+                    break;
+                }
+
+            } else {
+                prev_count_sum += cross_count;
+                cross_count++;
+            }
         }
-
-        String ans = "";
-
-        if(total == X){
-            ans = "Yes";
-        }else{
-            ans = "No";
-        }
-
-        bw.write(ans);
-        bw.flush();
-        bw.close();
-        br.close();
     }
 }
