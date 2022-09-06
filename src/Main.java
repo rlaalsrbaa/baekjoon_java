@@ -3,25 +3,43 @@ import java.io.*;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
         int X = Integer.parseInt(br.readLine());
+        int max = 0;
+        int line = 0;
 
-        int cross_count = 1, prev_count_sum = 0;
+        int num = 0;
+        int den = 0;
 
-        while (true) {
-            if (X <= prev_count_sum + cross_count) {
-
-                if (cross_count % 2 == 1) {
-                    System.out.print((cross_count - (X - prev_count_sum - 1)) + "/" + (X - prev_count_sum));
-                    break;
-                } else {
-                    System.out.print((X - prev_count_sum) + "/" + (cross_count - (X - prev_count_sum - 1)));
-                    break;
-                }
-
-            } else {
-                prev_count_sum += cross_count;
-                cross_count++;
+        while (max < X) {
+            line += 1;
+            max += line;
+        }
+        if (line % 2 == 0) {
+            int step = max;
+            num = line;
+            den = 1;
+            while (step > X) {
+                num--;
+                den++;
+                step --;
+            }
+        } else {
+            int step = max;
+            num = 1;
+            den = line;
+            while (step > X) {
+                num++;
+                den--;
+                step --;
             }
         }
+
+        bw.write(String.format("%d/%d", num, den));
+
+        bw.flush();
+        bw.close();
+        br.close();
     }
 }
