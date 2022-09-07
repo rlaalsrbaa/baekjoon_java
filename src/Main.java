@@ -13,7 +13,9 @@ public class Main {
         int ans = 0;
 
         ans = (V-A) / (A-B) + 1;
-
+        if(((V-A) % (A-B)) != 0){
+            ans = (V-A) / (A-B) + 2;
+        }
         bw.write(Integer.toString(ans));
         bw.flush();
         bw.close();
