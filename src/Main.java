@@ -1,43 +1,20 @@
 import java.io.*;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int X = Integer.parseInt(br.readLine());
-        int max = 0;
-        int line = 0;
+        int A = Integer.parseInt(st.nextToken());
+        int B = Integer.parseInt(st.nextToken());
+        int V = Integer.parseInt(st.nextToken());
+        int ans = 0;
 
-        int num = 0;
-        int den = 0;
+        ans = (V-A) / (A-B) + 1;
 
-        while (max < X) {
-            line += 1;
-            max += line;
-        }
-        if (line % 2 == 0) {
-            int step = max;
-            num = line;
-            den = 1;
-            while (step > X) {
-                num--;
-                den++;
-                step --;
-            }
-        } else {
-            int step = max;
-            num = 1;
-            den = line;
-            while (step > X) {
-                num++;
-                den--;
-                step --;
-            }
-        }
-
-        bw.write(String.format("%d/%d", num, den));
-
+        bw.write(Integer.toString(ans));
         bw.flush();
         bw.close();
         br.close();
