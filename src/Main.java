@@ -15,27 +15,15 @@ public class Main {
             int floor = 0;
             int unit = 0;
 
-            if(H >= N){
-                floor = N;
-                unit = 1;
-                bw.write(String.format("%d0%d\n",floor,unit));
-            }else if(H == 1){
-                floor = 1;
-                unit = N;
-                if(unit > 9){
-                    bw.write(String.format("%d%d\n",floor,unit));
-                }  else {
-                    bw.write(String.format("%d0%d\n",floor,unit));
-                }
+            floor = N % H;
+            unit = N / H;
+
+            if(N % H == 0){
+                floor = H;
             }else{
-                floor = N % H;
-                unit = (N / H);
-                if(unit > 9){
-                    bw.write(String.format("%d%d\n",floor,unit));
-                }  else {
-                    bw.write(String.format("%d0%d\n",floor,unit));
-                }
+                unit++;
             }
+            bw.write(String.format("%d\n",(floor*100) + unit));
         }
 
         bw.flush();
