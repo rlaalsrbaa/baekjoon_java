@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -11,13 +10,16 @@ public class Main {
         for (int i = 0; i < 15; i++) {
             arr[0][i] = i;
         }
-
         for (int i = 1; i < 15; i++) {
             for (int j = 1; j < 15; j++) {
                 arr[i][j] = arr[i-1][j] + arr[i][j-1];
             }
         }
-        System.out.println(Arrays.deepToString(arr));
+        for(int i = 0; i < T; i++){
+            int k = Integer.parseInt(br.readLine());
+            int n = Integer.parseInt(br.readLine());
+            bw.write(Integer.toString(arr[k][n])+"\n");
+        }
 
         bw.flush();
         bw.close();
