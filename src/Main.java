@@ -1,30 +1,23 @@
 import java.io.*;
-import java.util.StringTokenizer;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         int T = Integer.parseInt(br.readLine());
+        int arr[][] = new int[15][15];
 
-        for (int i = 0; i < T; i++) {
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            int H = Integer.parseInt(st.nextToken());
-            int W = Integer.parseInt(st.nextToken());
-            int N = Integer.parseInt(st.nextToken());
-            int floor = 0;
-            int unit = 0;
-
-            floor = N % H;
-            unit = N / H;
-
-            if(N % H == 0){
-                floor = H;
-            }else{
-                unit++;
-            }
-            bw.write(String.format("%d\n",(floor*100) + unit));
+        for (int i = 0; i < 15; i++) {
+            arr[0][i] = i;
         }
+
+        for (int i = 1; i < 15; i++) {
+            for (int j = 1; j < 15; j++) {
+                arr[i][j] = arr[i-1][j] + arr[i][j-1];
+            }
+        }
+        System.out.println(Arrays.deepToString(arr));
 
         bw.flush();
         bw.close();
