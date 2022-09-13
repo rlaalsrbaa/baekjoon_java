@@ -4,23 +4,28 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        int T = Integer.parseInt(br.readLine());
-        int arr[][] = new int[15][15];
-
-        for (int i = 0; i < 15; i++) {
-            arr[0][i] = i;
+        int N = Integer.parseInt(br.readLine());
+        int A = 0;
+        int temp = N % 5;
+        int i = 0;
+        if(temp % 3 == 0){
+            A = (N / 5) + (temp / 3);
         }
-        for (int i = 1; i < 15; i++) {
-            for (int j = 1; j < 15; j++) {
-                arr[i][j] = arr[i-1][j] + arr[i][j-1];
+        while(true){
+            if(temp % 3 == 0){
+                A = (N / 5) + (temp / 3);
+                break;
+            }else if (i == N / 5){
+                break;
             }
+            i++;
+            temp += (i & 5);
         }
-        for(int i = 0; i < T; i++){
-            int k = Integer.parseInt(br.readLine());
-            int n = Integer.parseInt(br.readLine());
-            bw.write(Integer.toString(arr[k][n])+"\n");
+        if(N % 3 == 0){
+            A = N / 3;
+        }else{
+            A = -1;
         }
-
         bw.flush();
         bw.close();
         br.close();
