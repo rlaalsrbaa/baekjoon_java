@@ -1,22 +1,19 @@
 import java.io.*;
+import java.math.BigInteger;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        int N = Integer.parseInt(br.readLine());
-        int A = 0;
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        if(N == 4 || N == 7){
-            A = -1;
-        }else if(N % 5 == 0){
-            A = N / 5;
-        }else if (N % 5 == 1 || N % 5 == 3){
-            A = (N / 5) + 1;
-        }else if (N % 5 == 2 || N % 5 == 4){
-            A = (N / 5) + 2;
-        }
-        bw.write(Integer.toString(A));
+        BigInteger A = new BigInteger(st.nextToken());
+        BigInteger B = new BigInteger(st.nextToken());
+
+        BigInteger result = A.add(B);
+        bw.write(String.format("%s",result));
+
         bw.flush();
         bw.close();
         br.close();
