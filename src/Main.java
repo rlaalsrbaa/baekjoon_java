@@ -11,11 +11,9 @@ public class Main {
 
         for (int i = 0; i < N; i++) {
             int A = Integer.parseInt(st.nextToken());
-            if(A == 2){
-             cnt++;
-             continue;
+            if(decimalChecker(A)){
+                cnt++;
             }
-
         }
 
         bw.write(Integer.toString(cnt));
@@ -24,14 +22,19 @@ public class Main {
         bw.close();
         br.close();
     }
-    public static int decimalChecker(int A){
-        int isdecimal = 0;
+    public static boolean decimalChecker(int A){
+        boolean isdecimal = false;
+        if(A == 1){
+            return isdecimal;
+        } else if (A == 2) {
+            return true;
+        }
         for(int j = 2; j < A; j++){
             if(A % j == 0){
-
-                break;
+                return isdecimal;
             }
         }
+        isdecimal = true;
         return isdecimal;
     }
 }
