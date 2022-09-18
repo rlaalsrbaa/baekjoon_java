@@ -1,22 +1,30 @@
 import java.io.*;
-import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int M = Integer.parseInt(br.readLine());
         int N = Integer.parseInt(br.readLine());
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int cnt = 0;
+        boolean isCheckedMinValue = false;
+        int min = 0;
+        int total = 0;
 
-        for (int i = 0; i < N; i++) {
-            int A = Integer.parseInt(st.nextToken());
-            if(decimalChecker(A)){
-                cnt++;
+        for (int i = M; i <= N; i++) {
+            if(decimalChecker(i)){
+                total += i;
+                if(!isCheckedMinValue){
+                    min = i;
+                    isCheckedMinValue = true;
+                }
             }
         }
+        if(isCheckedMinValue){
+            bw.write(String.format("%d\n%d",total,min));
+        }else{
+            bw.write(String.format("-1"));
+        }
 
-        bw.write(Integer.toString(cnt));
 
         bw.flush();
         bw.close();
