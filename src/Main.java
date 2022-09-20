@@ -7,12 +7,12 @@ public class Main {
         int N = Integer.parseInt(br.readLine());
         int i = 2;
         if (N != 1) {
-            while(true) {
-                if (decimalChecker(i)) {
-                    if (N % i == 0) {
+            while (true) {
+                if (N % i == 0) {
+                    if (decimalChecker(i)) {
                         N = N / i;
                         bw.write(Integer.toString(i) + "\n");
-                        if(N == 1){
+                        if (N == 1) {
                             break;
                         }
                         continue;
